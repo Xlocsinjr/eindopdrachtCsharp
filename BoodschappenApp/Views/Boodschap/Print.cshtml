@@ -1,0 +1,59 @@
+﻿@model IEnumerable<IngredientDB.BoodschapIngredient>
+@{
+    ViewBag.Title = "Print";
+}
+
+
+<h2>Wil je dit overzetten naar een bestand die je kan uitprinten?</h2>
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ingredient.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ingredient.merk)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hoeveelheid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Eenheid)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ingredient.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ingredient.merk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hoeveelheid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Eenheid)
+            </td>
+            <td>
+            </td>
+        </tr>
+    }
+
+</table>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <p>
+
+        <button type="submit" value="Print" class="btn btn-default">print</button>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<IngredientDB.BoodschapIngredient>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>BoodschappenLijst</h2>
+
+
+<p1> Search ingredient:</p1>
+<form method="post">
+    <input type="text" name="input" />
+    <input type="submit" value="Search" />
+
+</form>
+
+<p>
+    @Html.ActionLink("Voeg toe", "Toevoegen")
+    |
+    @Html.ActionLink("print bestand", "Print")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ingredient.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ingredient.merk)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hoeveelheid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Eenheid)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ingredient.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ingredient.merk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hoeveelheid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Eenheid)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.BoodschapIngredientID }) |
+                @Html.ActionLink("Gekocht", "Gekocht", new { id = item.BoodschapIngredientID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.BoodschapIngredientID })
+            </td>
+        </tr>
+    }
+
+</table>
+
